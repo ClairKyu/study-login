@@ -8,11 +8,18 @@ const registerBtn = document.querySelector("#button"); //버튼태그 아이디�
 registerBtn.addEventListener("click", register);
 
 function register() {
+  if (!id.value) return alert("아이디를 입력하여 주십시오.");
+  if (!name.value) return alert("이름을 입력하여 주십시오.");
+  if (!pw.value) return alert("비밀번호를 입력하여 주십시오.");
+  if (!confirmPw.value) return alert("비밀번호 확인을 입력하여 주십시오.");
+
+  if (pw.value !== confirmPw.value)
+    return alert("비밀번호가 일치하지 않습니다.");
+
   const req = {
     id: id.value,
     name: name.value,
     pw: pw.value,
-    confirmPw: confirmPw.value,
   };
 
   fetch("/register", {
