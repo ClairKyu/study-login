@@ -12,7 +12,6 @@ function register() {
   if (!name.value) return alert("이름을 입력하여 주십시오.");
   if (!pw.value) return alert("비밀번호를 입력하여 주십시오.");
   if (!confirmPw.value) return alert("비밀번호 확인을 입력하여 주십시오.");
-
   if (pw.value !== confirmPw.value)
     return alert("비밀번호가 일치하지 않습니다.");
 
@@ -34,6 +33,7 @@ function register() {
       if (res.success) {
         location.href = "/login";
       } else {
+        if (res.err) return alert(res.err);
         alert(res.msg);
       }
     })
