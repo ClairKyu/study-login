@@ -2,9 +2,11 @@
 
 //모듈
 const express = require("express");
-const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
+//const morgan = require("morgan");
+
+const app = express();
 
 //라우팅
 const home = require("./src/routes/home");
@@ -21,3 +23,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/", home); //use -> 미들웨어를 등록해주는 메서드, 꼭 마지막줄에 넣어라!!!
 
 module.exports = app;
+
+//app.use(morgan("dev"));
+//app.use(morgan("common", { stream: accessLogStream }));
